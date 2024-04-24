@@ -2,13 +2,24 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    return render(request, 'dental/home.html')
+    if request.method == "POST":
+        name = request.POST.get('message-name')
+        email = request.POST.get('message-email')
+        message = request.POST.get('message')
+        return render(request, 'dental/home.html' ,{'name':name})
+
+    else:
+        return render(request, 'dental/home.html', {})
 
 def about(request):
     return render(request, 'dental/about.html')
 
 def contact(request):
-    return render(request, 'dental/contact.html')
+    name = request.POST.get('message-name')
+    email = request.POST.get('message-email')
+    message = request.POST.get('message')
+    return render(request, 'dental/contact.html' ,{'name':name})
+ 
 
 def services(request):
     return render(request, 'dental/services.html')
