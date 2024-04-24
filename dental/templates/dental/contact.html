@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="{% static 'dental/css/icomoon.css' %}">
     <link rel="stylesheet" href="{% static 'dental/css/style.css' %}">
   </head>
-  <body>
+  <br>
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
@@ -61,65 +61,74 @@
         </div>
       </div>
     </section>
-		
-		<section class="ftco-section contact-section ftco-degree-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-4">
-            <h2 class="contact-information">Contact Information</h2>
+   <br> <br>  
+    {% if name %}
+      <center>
+        <h2>Thanks {{name}}!</h2>
+        <p>We received your message and will respond shortly..</p>
+      </center>
+    {% else %}
+      <section class="ftco-section contact-section ftco-degree-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <h2 class="contact-information">Contact Information</h2>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-3">
+              <p><span>Address: </span> P.O. BOX 279-10400 Nanyuki </p>
+            </div>
+            <div class="col-md-3">
+              <p><span>Phone:</span> <a href="tel://1234567920">+254742164242</a></p>
+            </div>
+            <div class="col-md-3">
+              <p><span>Email: </span> <a href="mailto:info@gmail.com">muriukimoff6@gmail.com</a></p>
+            </div>
+            
+            
           </div>
-          <div class="w-100"></div>
-          <div class="col-md-3">
-            <p><span>Address: </span> P.O. BOX 279-10400 Nanyuki </p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Phone:</span> <a href="tel://1234567920">+254742164242</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Email: </span> <a href="mailto:info@gmail.com">muriukimoff6@gmail.com</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Website: </span> <a href="#">Dentacare.com</a></p>
-          </div>
-          
+          <div class="col-md-6 py-5 pl-md-5">
+            <div class="heading-section mb-5 ftco-animate">
+                <h2 class="mb-2">Let us hear from you</h2>
+            </div>
+              <form action="#" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <input type="text" name="message-name" class="form-control" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="message-email" class="form-control" placeholder="Your Email">
+                </div>
+                
+                <div class="form-group">
+                  <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                </div>
+              </form>
+          </div>  
+            
         </div>
-        <div class="col-md-6 py-5 pl-md-5">
-          <div class="heading-section mb-5 ftco-animate">
-              <h2 class="mb-2">Let us hear from you</h2>
-          </div>
-            <form action="#" method="post">
-              {% csrf_token %}
-              <div class="form-group">
-                <input type="text" name="message-name" class="form-control" placeholder="Your Name">
+      </section>
+      <center>
+        <section class="dento-contact-area mt-50 mb-100 pl-md-0">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="google-maps mb-100 ">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d75905.67411020276!2d37.16350377205907!3d-0.9230439527131231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m5!1s0x1828b281f1e48117%3A0xed15bbedf26a9250!2sKenol%20Town%2C%20Kenya!3m2!1d-0.93923!2d37.1249056!4m3!3m2!1d-0.9380463!2d37.125737699999995!5e0!3m2!1sen!2snl!4v1713820172572!5m2!1sen!2snl" width="1400" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
               </div>
-              <div class="form-group">
-                <input type="text" name="message-email" class="form-control" placeholder="Your Email">
-              </div>
-              
-              <div class="form-group">
-                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-            </form>
-        </div>  
-          
-      </div>
-    </section>
-
-    <section class="dento-contact-area mt-50 mb-100 pl-md-0">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="google-maps mb-100 ">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d75905.67411020276!2d37.16350377205907!3d-0.9230439527131231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m5!1s0x1828b281f1e48117%3A0xed15bbedf26a9250!2sKenol%20Town%2C%20Kenya!3m2!1d-0.93923!2d37.1249056!4m3!3m2!1d-0.9380463!2d37.125737699999995!5e0!3m2!1sen!2snl!4v1713820172572!5m2!1sen!2snl" width="1400" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
-        </div>
-      </div>
-
-    </section>
+    
+        </section>
+      </center>
+    {% endif %}
+    <br> <br>
+    
+   
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">

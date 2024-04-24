@@ -43,7 +43,6 @@
 	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Services</a></li>
 	          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="{% url 'contact' %}" class="nav-link" data-toggle="modal" data-target="#modalRequest"><span>Make an Appointment</span></a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -59,7 +58,6 @@
             <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
               <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Dentistry in a Calm and Relaxed Environment</h1>
               <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Where every smile finds its sparkle..</p>
-              <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#" class="btn btn-primary px-4 py-3">Make an Appointment</a></p>
             </div>
           </div>
         </div>
@@ -72,7 +70,6 @@
             <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
               <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Achieve Your Desired Perfect Smile</h1>
               <p class="mb-4">Smiles that shine brighter, and care that feels like home.</p>
-              <p><a href="#" class="btn btn-primary px-4 py-3">Make an Appointment</a></p>
             </div>
           </div>
         </div>
@@ -101,18 +98,19 @@
     			</div>
     			<div class="col-md-6 color-3 p-4">
     				<h3 class="mb-2">Make an Appointment</h3>
-    				<form action="#" class="appointment-form">
+    				<form action="#"  class="appointment-form">
+             
 	            <div class="row">
 	            	<div class="col-sm-4">
 	                <div class="form-group">
 			              <div class="select-wrap">
                       <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="" id="" class="form-control">
+                      <select name="department" id="department" class="form-control">
                       	<option value="">Department</option>
-                        <option value="">Teeth Whitening</option>
-                        <option value="">Teeth CLeaning</option>
-                        <option value="">Quality Brackets</option>
-                        <option value="">Modern Anesthetic</option>
+                        <option value="1">Teeth Whitening</option>
+                        <option value="2">Teeth CLeaning</option>
+                        <option value="3">Quality Brackets</option>
+                        <option value="4">Modern Anesthetic</option>
                       </select>
                     </div>
 			            </div>
@@ -638,58 +636,68 @@
         </div>
       </div>
     </section>
-		
-		<section class="ftco-quote">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-6 pr-md-5 aside-stretch py-5 choose">
-    				<div class="heading-section heading-section-white mb-5 ftco-animate">
-	            <h2 class="mb-2">DentaCare Procedure &amp; High Quality Services</h2>
-	          </div>
-	          <div class="ftco-animate">
-	          	<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. Because there were thousands of bad Commas, wild Question Marks and devious Semikoli</p>
-	          	<ul class="un-styled my-5">
-	          		<li><span class="icon-check"></span>Consectetur adipisicing elit</li>
-	          		<li><span class="icon-check"></span>Adipisci repellat accusamus</li>
-	          		<li><span class="icon-check"></span>Tempore reprehenderit vitae</li>
-	          	</ul>
-	          </div>
-    			</div>
-    			<div class="col-md-6 py-5 pl-md-5">
+    {% if name %}
+      <center>
+        <h2>Thanks {{name}}!</h2>
+        <p>We received your message and will respond shortly..</p>
+      </center>
+    {% else %}
+      <section class="ftco-quote">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 pr-md-5 aside-stretch py-5 choose">
+              <div class="heading-section heading-section-white mb-5 ftco-animate">
+                <h2 class="mb-2">DentaCare Procedure &amp; High Quality Services</h2>
+              </div>
+              <div class="ftco-animate">
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One
+                  day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of
+                  Grammar. Because there were thousands of bad Commas, wild Question Marks and devious Semikoli</p>
+                <ul class="un-styled my-5">
+                  <li><span class="icon-check"></span>Consectetur adipisicing elit</li>
+                  <li><span class="icon-check"></span>Adipisci repellat accusamus</li>
+                  <li><span class="icon-check"></span>Tempore reprehenderit vitae</li>
+                </ul>
+              </div>
+            </div>
+            <br> <br>
+      
+            <div class="col-md-6 py-5 pl-md-5">
               <div class="heading-section mb-5 ftco-animate">
                 <h2 class="mb-2">Get in touch</h2>
               </div>
-	          <form action="{% url 'home' %}" method='post'  class="ftco-animate">
-              {% csrf_token %}
-	          	<div class="row">
-	          		<div class="col-md-6">
-		              <div class="form-group">
-		                <input type="text" name="message-name"  class="form-control" placeholder="Full Name">
-		              </div>
-	              </div>
-	              <div class="col-md-6">
-		              <div class="form-group">
-		                <input type="text" name="message-email"  class="form-control" placeholder="Email">
-		              </div>
-	              </div>
-	              
-		            <div class="col-md-12">
-		              <div class="form-group">
-		                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-		              </div>
-		            </div>
-		            <div class="col-md-12">
-		              <div class="form-group">
-		                <input type="submit" value="Get in touch" class="btn btn-primary py-3 px-5">
-		              </div>
-	              </div>
-              </div>
-            </form>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-		
+              <form action="{% url 'home' %}" method='post' class="ftco-animate">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" name="message-name" class="form-control" placeholder="Full Name">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" name="message-email" class="form-control" placeholder="Email">
+                    </div>
+                  </div>
+      
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="submit" value="Get in touch" class="btn btn-primary py-3 px-5">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+    {% endif %}
 		<div id="map"></div>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
