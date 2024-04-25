@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
 import dj_database_url
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,13 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ee_)88s$sfxrx=ur9((lclst(+o-0yf09l=!%*()+ss+))*xe1'
-
+SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-ee_)88s$sfxrx=ur9((lclst(+o-0yf09l=!%*()+ss+))*xe1')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =  'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Dent.urls'
@@ -79,12 +80,22 @@ WSGI_APPLICATION = 'Dent.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='postgres://librarydb_egol_user:q8XbslG7jaN0nB5UW3UrpINdtauzVqiK@dpg-cobv9bmn7f5s73fvt98g-a.oregon-postgres.render.com/librarydb_egol',
+        conn_max_age=600
+        )
 }
+
+
 
 
 # Password validation
@@ -126,7 +137,11 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-STATIC_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 #Email settings
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -147,4 +162,3 @@ STATIC_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-django_heroku.settings(locals())
