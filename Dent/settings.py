@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     "https://dentalcare-website-egpw.onrender.com",
 ]  # os.environ.get("ALLOWED_HOSTS").split(" ")
 
-# CSRF_TRUSTED_ORIGINS = ['https://dentalcare-website-egpw.onrender.com']
+CSRF_TRUSTED_ORIGINS = ["https://dentalcare-website-egpw.onrender.com"]
 # Application definition
 
 INSTALLED_APPS = [
