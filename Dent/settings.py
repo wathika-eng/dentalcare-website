@@ -28,10 +28,7 @@ SECRET_KEY = "*********************************************"  # os.environ.get("
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = true  # os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "https://dentalcare-website-egpw.onrender.com",
-]  # os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ["*"]  # os.environ.get("ALLOWED_HOSTS").split(" ")
 
 CSRF_TRUSTED_ORIGINS = ["https://dentalcare-website-egpw.onrender.com"]
 # Application definition
