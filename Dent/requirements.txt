@@ -7,7 +7,7 @@ colorama==0.4.6
 crispy-bootstrap4==2024.1
 distlib==0.3.8
 dj-database-url==2.1.0
-Django==4.2
+Django==3.2.19
 django-bootstrap4==24.3
 django-crispy-forms==2.1
 django-environ==0.11.2
